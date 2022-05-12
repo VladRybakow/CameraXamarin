@@ -14,7 +14,6 @@ namespace CameraXamarin.db
             DB = new SQLiteConnection(database);
             DB.CreateTable<ProjectPhoto>();
         }
-
         public IEnumerable<ProjectPhoto> GetProjectPhotos()
         {
             return DB.Table<ProjectPhoto>();
@@ -26,11 +25,15 @@ namespace CameraXamarin.db
                 DB.Update(projectphoto);
                 return projectphoto.Id;
             }
-
             else
             {
                 return DB.Insert(projectphoto);
             }
+        }
+
+        public int DeleteItem(int id)
+        {
+            return DB.Delete<ProjectPhoto>(id);
         }
     }
 }
