@@ -7,9 +7,8 @@
              x:Class="CameraXamarin.ObjectsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="name" BackgroundColor="Gray" Margin="40, 40, 40, 0" FontSize="15"/>
+            <Image x:Name="img" Margin="40"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

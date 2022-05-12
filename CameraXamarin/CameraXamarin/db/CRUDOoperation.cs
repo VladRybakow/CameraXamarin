@@ -6,10 +6,10 @@ using System.Text;
 
 namespace CameraXamarin.db
 {
-    public class CRUDOoperation
+    public class CRUDOperation
     {
         SQLiteConnection DB;
-        public CRUDOoperation(string database)
+        public CRUDOperation(string database)
         {
             DB = new SQLiteConnection(database);
             DB.CreateTable<ProjectPhoto>();

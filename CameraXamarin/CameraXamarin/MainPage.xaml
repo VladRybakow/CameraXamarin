@@ -5,12 +5,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CameraXamarin.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame Margin="0,0" BorderColor="Black">
+                    <Entry x:Name="Name" Placeholder="Введите название" TextColor="Black" Background="White" Margin="-15,-15" Keyboard="Text"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Button Margin="50,20,0,0"  x:Name="btnGallery" Clicked="btnGallery_Clicked" HorizontalOptions="Start" BorderColor="Black"  BorderWidth="1" 
+                        BackgroundColor="LightBlue" TextColor="Black" Text="Галерея" CornerRadius="50" Padding="40,0"/>
+                <Button Margin="0,-54,50,0"  x:Name="btnCam" HorizontalOptions="EndAndExpand" Clicked="btnCam_Clicked" BorderColor="Black" BorderWidth="1" 
+                        BackgroundColor="LightBlue" TextColor="Black" Text="Камера" CornerRadius="100" Padding="40,0"/>
+                <Button Margin="0,20,0,0" x:Name="btnAdd" HorizontalOptions="Center" Clicked="btnAdd_Clicked" BorderColor="Black" BorderWidth="1" 
+                        BackgroundColor="LightBlue" TextColor="Black" Text="Добавить" Padding="150,0" CornerRadius="90"/>
+            </StackLayout>
+            <StackLayout Margin="10, 30">
+                <ScrollView>
+                    <ListView x:Name="ObjectList" Margin="0,0" ItemTapped="ObjectList_ItemTapped" RowHeight="50" SeparatorColor="Gray">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="20"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
