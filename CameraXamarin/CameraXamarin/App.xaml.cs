@@ -8,7 +8,7 @@ namespace CameraXamarin
 {
     public partial class App : Application
     {
-        public const string DB_Name = "PhotoObj.db";
+        public const string DB_Name = "clientsProj.db";
         public static CRUDOperation DB;
 
         public static CRUDOperation Db

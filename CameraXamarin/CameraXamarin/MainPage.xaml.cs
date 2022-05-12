@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.Diagnostics;
+using System.IO;
+using Xamarin.Essentials;
 
 
 namespace CameraXamarin
@@ -25,7 +25,13 @@ namespace CameraXamarin
 
         public void UpdateList()
         {
+            ObjectList.RefreshCommand = new Command(() =>
+            {
+                ObjectList.IsRefreshing = false;
+            });
             ObjectList.ItemsSource = null;
+
+            ObjectList.ItemsSource = App.Db.GetProjectPhotos();
         }
 
         protected override void OnAppearing()
@@ -80,6 +86,20 @@ namespace CameraXamarin
             catch
             {
                 DisplayAlert("", "Не удалось добавить обьект", "Ok");
+            }
+        }
+
+        private void btnSwipe_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var id = ((SwipeItem)sender).CommandParameter.ToString();
+                App.Db.DeleteItem(int.Parse(id));
+                UpdateList();
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Не удалось удалить объект", ex.Message, "ok");
             }
         }
 
